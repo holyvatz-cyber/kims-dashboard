@@ -581,7 +581,12 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const dstr=t=>new Date(t).toLocaleDateString(loc());
 // ---------- UI strings ----------
 const S={
-cs:{pptBtn:'Prezentace',pptBusy:'Připravuji…',pptErr:'Prezentaci se nepodařilo vytvořit. Zkuste to prosím znovu.',pptSrc:'Zdroj: Knauf Integrated Management System,',
+cs:{pptCover:'Přehled BOZP, kvality a řízení změn',pptPeriod:'Období',pptT4:'Vývoj incidentů v čase',pptS4:(y,c,d,p)=>`${y}: ${c} incidentů, ${d} proti stejnému období ${p}.`,pptLtaY:'Úrazy s PN po letech',pptLag:'osobních událostí nahlášeno do 24 h',
+pptS5:(h,p,d,w)=>`Nejrizikovější okno ${h} (${p} % osobních událostí), nejčastější den ${d}, víkend ${w} %.`,pptHeat:'Osobní události podle dne v týdnu a hodiny',pptWd:'Podle dne v týdnu',pptHours:'Podle hodiny',
+pptT6:'Příčiny úrazů a požáry',pptS6:(a,p,b,q)=>`Nejčastější bezprostřední příčina: ${a} (${p} %). Nejčastější systémová příčina: ${b} (${q} %).`,
+pptS7:(n,a)=>`Menší a závažné neshody tvoří ${n} % z ${a} auditních zjištění.`,pptS8:(t,a,c)=>`${t} % MOC jsou zkoušky, ${a} % bylo zrušeno bez realizace. Vyplněné náklady celkem ${c} €.`,
+pptS9:(n,b,r)=>`${n} jednotek s alespoň 20 záznamy. Nejvyšší poměr proaktivního hlášení: ${b} (${r} : 1).`,pptCpNote:'Seřazeno podle počtu incidentů. Poměr hlášení = skoronehody a události bez ošetření na jeden úraz s PN. Vybraná jednotka je zvýrazněna.',
+pptT10:'Klíčová zjištění',pptS10:'Automaticky vybraná zjištění z dat pro zvolený výběr.',pptBtn:'Prezentace',pptBusy:'Připravuji…',pptErr:'Prezentaci se nepodařilo vytvořit. Zkuste to prosím znovu.',pptSrc:'Zdroj: Knauf Integrated Management System,',
 pptT1:'Přehled BOZP, kvality a změn',pptS1:(e,p,r)=>`${e}, období ${p}. Na jeden úraz s PN připadá ${r} skoronehod a událostí bez ošetření.`,pptTrend:'Počet záznamů po čtvrtletích',
 pptT2:'Bezpečnost: kde a proč vznikají úrazy',pptS2:(w,p)=>`Nejrizikovější jsou dvě hodiny ${w}: připadá na ně ${p} % osobních událostí.`,pptCauses:'Nejčastější bezprostřední příčiny',
 pptT3:'Neshody, audity a řízení změn',pptS3:(n,a)=>`Menší a závažné neshody tvoří ${n} % auditních zjištění; ${a} % změn bylo zrušeno bez realizace.`,pptNcYear:'Záznamy po letech',pptAud:'Audity a obchůzky',pptQual:'Kvalitativní neshody',pptSev:'Závažnost auditních zjištění',pptAss:'Nejčastěji vyžadovaná posouzení změn',upNone:'Zatím nenahráno',wlH:'Nahrajte exporty z KIMS',wlS:'Tato verze aplikace neobsahuje žádná firemní data. Nahrajte exporty Accidents, NCRs a MOCs ve formátu .xlsx. Zpracují se jen ve vašem prohlížeči a nikam se neodesílají.',wlN:'Exporty můžete přetáhnout kamkoli na stránku. Aplikace si data zapamatuje v tomto prohlížeči.',ringU:'dní',recTo:(n,b)=>`Do rekordní série ${b} dní zbývá ${n} dní.`,recNew:'Aktuální série je nejdelší v datech.',recNone:'Ve zvoleném výběru není žádný úraz s PN.',
@@ -628,7 +633,12 @@ ttc:['Medián uzavření incidentu',q=>`Od nahlášení po uzavření; čtvrtina
 hipo:['Vysoký potenciál (HiPo)',p=>`${p} % všech incidentů mělo potenciál vážných následků.`],fire:['Požáry',(p,s)=>`${p} % všech incidentů.${s?` Nejčastěji v kroku ${s}.`:''}`],
 aud:['Auditní neshody',n=>`Podíl menších a závažných neshod mezi ${n} auditními zjištěními; zbytek jsou pozorování a příležitosti.`],abd:['Zrušené změny',p=>`MOC ukončených bez realizace. Posouzení BOZP vyžaduje ${p} % změn.`]},
 foot:(a,n,m)=>`Zdroj: Knauf Integrated Management System, ${srcTxt()}. ${a} incidentů, ${n} neshod, ${m} MOC. Aplikace funguje i offline.`},
-en:{pptBtn:'Presentation',pptBusy:'Preparing…',pptErr:'The presentation could not be created. Please try again.',pptSrc:'Source: Knauf Integrated Management System,',
+en:{pptCover:'HSE, quality and management of change overview',pptPeriod:'Period',pptT4:'Incidents over time',pptS4:(y,c,d,p)=>`${y}: ${c} incidents, ${d} vs the same period of ${p}.`,pptLtaY:'Lost time accidents by year',pptLag:'of personal events reported within 24 h',
+pptS5:(h,p,d,w)=>`Riskiest window ${h} (${p}% of personal events), most frequent day ${d}, weekend ${w}%.`,pptHeat:'Personal events by weekday and hour',pptWd:'By weekday',pptHours:'By hour',
+pptT6:'Injury causes and fires',pptS6:(a,p,b,q)=>`Most frequent immediate cause: ${a} (${p}%). Most frequent system cause: ${b} (${q}%).`,
+pptS7:(n,a)=>`Minor and major NCs make up ${n}% of ${a} audit findings.`,pptS8:(t,a,c)=>`${t}% of MOCs are trials, ${a}% were abandoned. Total recorded cost €${c}.`,
+pptS9:(n,b,r)=>`${n} units with at least 20 records. Highest proactive reporting ratio: ${b} (${r} : 1).`,pptCpNote:'Sorted by number of incidents. Reporting ratio = near misses and no-treatment events per lost time accident. The selected unit is highlighted.',
+pptT10:'Key findings',pptS10:'Automatically selected findings for the current selection.',pptBtn:'Presentation',pptBusy:'Preparing…',pptErr:'The presentation could not be created. Please try again.',pptSrc:'Source: Knauf Integrated Management System,',
 pptT1:'HSE, quality and change overview',pptS1:(e,p,r)=>`${e}, period ${p}. For every lost time accident there are ${r} near misses and no-treatment events.`,pptTrend:'Records per quarter',
 pptT2:'Safety: where and why injuries happen',pptS2:(w,p)=>`The riskiest two hours are ${w}: ${p}% of personal events happen then.`,pptCauses:'Most frequent immediate causes',
 pptT3:'Non-conformities, audits and management of change',pptS3:(n,a)=>`Minor and major NCs make up ${n}% of audit findings; ${a}% of changes were abandoned.`,pptNcYear:'Records by year',pptAud:'Audits and tours',pptQual:'Quality non-conformities',pptSev:'Audit finding severity',pptAss:'Assessments most often required',upNone:'Not uploaded yet',wlH:'Upload KIMS exports',wlS:'This version of the app contains no company data. Upload the Accidents, NCRs and MOCs exports as .xlsx. They are processed only in your browser and never sent anywhere.',wlN:'You can drop the exports anywhere on the page. The app remembers the data in this browser.',ringU:'days',recTo:(n,b)=>`${n} days to go to the record streak of ${b} days.`,recNew:'The current streak is the longest in the data.',recNone:'No lost time accident in this selection.',
@@ -790,7 +800,7 @@ function rOv(){
   chart('cTrend',{type:'line',data:{labels,datasets:[dset(L('modA'),ser(A,ia),CS('--signal')),dset(L('modN'),ser(N,inn),CS('--kb')),dset('MOC',ser(M,im),isDark()?CS('--moss'):'#004B46')]},
     options:{interaction:{mode:'index',intersect:false},plugins:{legend:leg,tooltip:{callbacks:{footer:()=>L('ma3')}}},scales:{x:{ticks:{maxTicksLimit:innerWidth<600?5:10,maxRotation:0},grid:{display:false}},y:{beginAtZero:true}}}});
   insightsRender(ia,inn,im);}
-function insightsRender(ia,inn,im){const I=L('ins'),out=[];const pers=ia.filter(i=>A.g('grp',i)==='Personal');
+function insList(ia,inn,im){const I=L('ins'),out=[];const pers=ia.filter(i=>A.g('grp',i)==='Personal');
   if(pers.length>=10){const h=new Array(24).fill(0);pers.forEach(i=>{if(A.h[i]>=0)h[A.h[i]]++;});let b=0,bv=0;for(let k=0;k<24;k++){const v=h[k]+h[(k+1)%24];if(v>bv){bv=v;b=k;}}
     out.push([I.hour[0],`${b}:00–${(b+2)%24}:00`,I.hour[1](pct(bv,pers.length))]);
     const wd=new Array(7).fill(0);pers.forEach(i=>{if(A.wd[i]>=0)wd[A.wd[i]]++;});const wi=wd.indexOf(Math.max(...wd));out.push([I.day[0],L('wdl')[wi],I.day[1](pct(wd[wi],pers.length),pct(wd[5]+wd[6],pers.length))]);}
@@ -803,6 +813,8 @@ function insightsRender(ia,inn,im){const I=L('ins'),out=[];const pers=ia.filter(
   const fires=ia.filter(i=>A.g('grp',i)==='Fire');const fps=count(A,fires,'ps');if(fires.length)out.push([I.fire[0],fmt(fires.length),I.fire[1](pct(fires.length,ia.length),fps[0]?.[0])]);
   const aud=inn.filter(i=>N.g('grp',i)==='Audit');const nc=aud.filter(i=>/Non Conformity/.test(N.g('fnd',i))).length;if(aud.length)out.push([I.aud[0],`${pct(nc,aud.length)} %`,I.aud[1](fmt(aud.length))]);
   const ab=im.filter(i=>M.g('st',i)==='Abandoned').length;if(im.length)out.push([I.abd[0],`${pct(ab,im.length)} %`,I.abd[1](pct(im.filter(i=>M.as[i]&1).length,im.length))]);
+  return out;}
+function insightsRender(ia,inn,im){const out=insList(ia,inn,im);
   insights.innerHTML=out.map(([k,v,e])=>`<div class="ins"><div class="k">${k}</div><div class="v">${esc(v)}</div><div class="e">${esc(e)}</div></div>`).join('')||`<div class="empty">${L('empty')}</div>`;}
 // ---------- safety ----------
 // ---------- body figures (front / back), red scale ----------
@@ -1002,15 +1014,19 @@ logoFile.onchange=()=>{const f=logoFile.files[0];logoFile.value='';if(!f)return;
   const r=new FileReader();r.onload=async()=>{setLogo(r.result);try{await IDB.set('logo',r.result);}catch(e){}upMsgSet(L('logoOk'),'ok');};r.readAsDataURL(f);};
 logoDel.onclick=async()=>{setLogo(null);try{await IDB.set('logo','');}catch(e){}};
 wlBtn.onclick=()=>upBtn.click();
-// ---------- PPTX export (3 slides, Knauf Insulation brand) ----------
+// ---------- PPTX export (10 slides, Knauf Insulation brand) ----------
 const DK={cy:'0099DE',ab:'003778',ink:'0E2A47',ink2:'4A5D70',mute:'7E8E9C',line:'E1E7EB',bg:'F3F6F8',kl:'E5F5FC',
-  or:'F06E00',or2:'F38D37',or3:'F7AA6A',yl:'FFD25C',lg:'87C15F',dg:'004B46',grey:'CFD7D9',c60:'66C2EB',good:'1F6B3A',bad:'B84F00',red:'D9372B'};
-const DF='Arial';
+  or:'F06E00',or2:'F38D37',or3:'F7AA6A',yl:'FFD25C',lg:'87C15F',dg:'004B46',grey:'CFD7D9',steel:'8FA3AD',c60:'66C2EB',good:'1F6B3A',bad:'B84F00',red:'D9372B'};
+const DF='Arial',DTOTAL=10;
 function imgLoad(src){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=src;});}
 async function toPng(src,maxW=900){const im=await imgLoad(src);const r=im.naturalHeight/im.naturalWidth||.25;const w=Math.min(maxW,im.naturalWidth||maxW),h=Math.round(w*r);
   const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);return{data:c.toDataURL('image/png'),r};}
+const hx2=a=>a.map(n=>Math.round(n).toString(16).padStart(2,'0')).join('').toUpperCase();
 const RL=['#FBDAD5','#F2978C','#D9372B','#8E0F12'].map(h=>hex2rgb(h));
-function rLight(t){if(t<=0)return'#EEF1F3';const x=Math.min(1,t)*3,i=Math.min(2,Math.floor(x)),u=x-i;return`rgb(${RL[i].map((a,j)=>Math.round(a+(RL[i+1][j]-a)*u)).join(',')})`;}
+function rLightA(t){if(t<=0)return hex2rgb('#EEF1F3');const x=Math.min(1,t)*3,i=Math.min(2,Math.floor(x)),u=x-i;return RL[i].map((a,j)=>a+(RL[i+1][j]-a)*u);}
+const rLight=t=>`rgb(${rLightA(t).map(Math.round).join(',')})`;
+const HB=['#F1F4F6','#99D6F2','#0099DE','#003778'].map(h=>hex2rgb(h));
+function heatHex(t){if(t<=0)return'F1F4F6';const x=Math.min(1,t)*3,i=Math.min(2,Math.floor(x)),u=x-i;return hx2(HB[i].map((a,j)=>a+(HB[i+1][j]-a)*u));}
 async function bodyPng(pers){
   const bz=Object.fromEntries(count(A,pers,'bz',{map:x=>x,split:true}));const mx=Math.max(1,...Object.values(bz));
   const S=2.5,W=160*S,H=364*S,c=document.createElement('canvas');c.width=W*2+30;c.height=H;const g=c.getContext('2d');
@@ -1025,6 +1041,14 @@ async function bodyPng(pers){
 function plainEnt(){if(F.lvl==='g'||!F.ent)return L('groupAll');if(F.lvl==='c')return ctyName(F.ent);if(F.lvl==='r')return`${L('lvR')} ${F.ent}`;const p=PLANTS.find(x=>x.c===F.ent);return`${L('lvP')} ${F.ent}${p?', '+ctyName(p.cty):''}`;}
 function deltaRun(c,p,goodDown){if(!p)return[{text:L('noCmp'),options:{color:DK.mute}}];const d=Math.round((c-p)/p*100);
   const col=goodDown===null||d===0?DK.ink2:(d<0?DK.good:DK.bad);return[{text:`${d>0?'+':''}${d} %`,options:{bold:true,color:col}},{text:` ${L('vs')} ${F.y1-1}`,options:{color:DK.ink2}}];}
+function cmpRows(){const lv=F.lvl==='r'?'r':F.lvl==='c'?'c':'p',col=colOf(lv);const ia=idx(A,{lvl:'g'}),inn=idx(N,{lvl:'g'}),im=idx(M,{lvl:'g'});const rows=new Map();
+  const R=c=>{if(!rows.has(c))rows.set(c,{c,a:0,lta:0,fa:0,pro:0,fire:0,n:0,hst:0,m:0});return rows.get(c);};
+  const ok=c=>c&&(lv!=='p'||PLANTS.some(p=>p.c===c))&&(lv!=='r'||REGS.includes(c));
+  ia.forEach(i=>{const c=A.g(col,i);if(!ok(c))return;const r=R(c);r.a++;if(isLTA(i))r.lta++;if(A.g('sub',i)==='First Aid Case')r.fa++;if(isPro(i))r.pro++;if(A.g('grp',i)==='Fire')r.fire++;});
+  inn.forEach(i=>{const c=N.g(col,i);if(!ok(c))return;const r=R(c);r.n++;if(N.g('type',i)==='Hazard Spotting Tour')r.hst++;});
+  im.forEach(i=>{const c=M.g(col,i);if(ok(c))R(c).m++;});
+  const list=[...rows.values()].filter(r=>r.a+r.n+r.m>=20);list.forEach(r=>{r.ratio=r.lta?r.pro/r.lta:null;r.lab=lv==='c'?ctyName(r.c):r.c;});
+  return{lv,list:list.sort((a,b)=>b.a-a.a),sel:lv===F.lvl?F.ent:''};}
 async function exportDeck(){
   if(!hasData())return;
   pptBtn.disabled=true;const lab=pptBtn.querySelector('span');const old=lab.textContent;lab.textContent=L('pptBusy');
@@ -1036,7 +1060,10 @@ async function exportDeck(){
   const src=`${L('pptSrc')} ${srcTxt()}`;
   const T=(s,text,o)=>s.addText(text,Object.assign({fontFace:DF,margin:0,valign:'top',color:DK.ink},o));
   const panel=(s,x,y,w,h,o={})=>s.addShape(SH.roundRect,Object.assign({x,y,w,h,rectRadius:.08,fill:{color:'FFFFFF'},line:{color:DK.line,width:.75}},o));
-  function chrome(s,n,title,sub){
+  const ptitle=(s,x,y,w,t)=>T(s,t,{x:x+.22,y:y+.16,w:w-.44,h:.28,fontSize:12,bold:true});
+  const cut=(k,n=40)=>k.length>n?k.slice(0,n-2).trim()+'…':k;
+  let page=0;
+  function chrome(s,title,sub){page++;
     s.background={color:'FFFFFF'};
     if(logo){const h=.36;s.addImage({data:logo.data,x:.5,y:.36,w:h/logo.r,h});}else T(s,'Knauf Insulation',{x:.5,y:.36,w:3,h:.36,fontSize:16,bold:true,color:DK.cy});
     T(s,meta,{x:5.4,y:.4,w:7.43,h:.3,fontSize:10,color:DK.mute,align:'right'});
@@ -1045,30 +1072,55 @@ async function exportDeck(){
     if(sub)T(s,sub,{x:.5,y:1.58,w:12.33,h:.32,fontSize:12.5,color:DK.ink2});
     s.addShape(SH.rect,{x:0,y:7.4,w:13.333,h:.1,fill:{color:DK.cy},line:{type:'none'}});
     T(s,src,{x:.5,y:7.04,w:10,h:.25,fontSize:8.5,color:DK.mute});
-    T(s,`${n} / 3`,{x:11.83,y:7.04,w:1,h:.25,fontSize:8.5,color:DK.mute,align:'right'});}
+    T(s,`${page} / ${DTOTAL}`,{x:11.83,y:7.04,w:1,h:.25,fontSize:8.5,color:DK.mute,align:'right'});}
   function tile(s,x,y,w,h,val,lab,filled){
     s.addShape(SH.roundRect,{x,y,w,h,rectRadius:.08,fill:{color:filled?DK.cy:DK.bg},line:{type:'none'}});
-    T(s,val,{x:x+.18,y:y+.13,w:w-.3,h:.48,fontSize:24,bold:true,color:filled?'FFFFFF':DK.ab,fit:'shrink'});
+    T(s,val,{x:x+.18,y:y+.13,w:w-.3,h:.48,fontSize:24,bold:true,color:filled?'FFFFFF':DK.ab});
     T(s,lab,{x:x+.18,y:y+.6,w:w-.3,h:h-.66,fontSize:9.5,color:filled?'FFFFFF':DK.ink2});}
-  function hbars(s,x,y,w,rows,{rowH=.5,color=DK.or,total}={}){
+  function tiles(s,arr,y=2.1,h=.95){const n=arr.length,w=(12.33-(n-1)*.2)/n;arr.forEach(([v,l],k)=>tile(s,.5+k*(w+.2),y,w,h,v,l,k===0));}
+  function hbars(s,x,y,w,rows,{rowH=.5,color=DK.or,total,fs=10}={}){
+    if(!rows.length){T(s,L('empty'),{x,y,w,h:.3,fontSize:10,color:DK.mute});return;}
     const mx=Math.max(1,...rows.map(r=>r[1])),tot=total??rows.reduce((a,r)=>a+r[1],0);
     rows.forEach(([k,v,c],i)=>{const yy=y+i*rowH;
-      T(s,k.length>40?k.slice(0,38).trim()+'…':k,{x,y:yy,w:w-1.05,h:.24,fontSize:10,color:DK.ink});
-      T(s,[{text:fmt(v),options:{bold:true}},{text:`  ${pct(v,tot)} %`,options:{color:DK.mute}}],{x:x+w-1.1,y:yy,w:1.1,h:.24,fontSize:10,align:'right',color:DK.ink2});
+      T(s,cut(k,Math.round(w*11)),{x,y:yy,w:w-1.05,h:.24,fontSize:fs,color:DK.ink});
+      T(s,[{text:fmt(v),options:{bold:true}},{text:`  ${pct(v,tot)} %`,options:{color:DK.mute}}],{x:x+w-1.1,y:yy,w:1.1,h:.24,fontSize:fs,align:'right',color:DK.ink2});
       s.addShape(SH.roundRect,{x,y:yy+.27,w,h:.09,rectRadius:.045,fill:{color:DK.bg},line:{type:'none'}});
       if(v)s.addShape(SH.roundRect,{x,y:yy+.27,w:Math.max(.09,w*v/mx),h:.09,rectRadius:.045,fill:{color:c||color},line:{type:'none'}});});}
   const axis={catAxisLabelFontFace:DF,valAxisLabelFontFace:DF,catAxisLabelFontSize:9,valAxisLabelFontSize:9,catAxisLabelColor:DK.ink2,valAxisLabelColor:DK.mute,
     valGridLine:{color:DK.line,size:.5},catGridLine:{style:'none'},valAxisLineShow:false,catAxisLineShow:true,catAxisLineColor:DK.grey,
     showLegend:true,legendPos:'b',legendFontFace:DF,legendFontSize:9,legendColor:DK.ink2,valAxisMinVal:0};
-  const ia=idx(A),inn=idx(N),im=idx(M),pers=ia.filter(i=>A.g('grp',i)==='Personal'),K=L('k');
-  // ===== slide 1: overview =====
+  const colOpt=Object.assign({},axis,{barDir:'col',barGapWidthPct:55});
+  const ia=idx(A),inn=idx(N),im=idx(M),pers=ia.filter(i=>A.g('grp',i)==='Personal'),K=L('k'),ys=yearsArr().map(String),ysS=ys.length>6?ys.map(y=>"'"+y.slice(2)):ys;
+  const yc=(ds,ix,f)=>ys.map(y=>ix.filter(i=>ds.y[i]===+y&&f(i)).length);
+  const skip=['Not Applicable','Jiné','Other'];
+  // shared numbers
+  const allA=idx(A,{allYears:true});const ltaT=allA.filter(isLTA).map(i=>A.t[i]).filter(Boolean).sort((a,b)=>a-b);
+  let days,best=0,last=null;if(ltaT.length){last=ltaT[ltaT.length-1];days=Math.max(0,Math.floor((ASOF-last)/864e5));best=days;let prev=Date.parse(YMIN+'-01-01T12:00:00');for(const t of ltaT){best=Math.max(best,Math.floor((t-prev)/864e5));prev=t;}}
+  else days=Math.floor((ASOF-Date.parse(YMIN+'-01-01T12:00:00'))/864e5);
+  const ltaN=ia.filter(isLTA).length,proN=ia.filter(isPro).length;
+  let hourTxt='',hourP=0,dayI=-1,wd=new Array(7).fill(0),hm=Array.from({length:7},()=>new Array(24).fill(0));
+  pers.forEach(i=>{if(A.wd[i]>=0)wd[A.wd[i]]++;if(A.wd[i]>=0&&A.h[i]>=0)hm[A.wd[i]][A.h[i]]++;});
+  if(pers.length>=10){const h=new Array(24).fill(0);pers.forEach(i=>{if(A.h[i]>=0)h[A.h[i]]++;});let b=0,bv=0;for(let k=0;k<24;k++){const v=h[k]+h[(k+1)%24];if(v>bv){bv=v;b=k;}}
+    hourTxt=`${b}:00–${(b+2)%24}:00`;hourP=pct(bv,pers.length);dayI=wd.indexOf(Math.max(...wd));}
+
+  // ===== 1 cover =====
+  {const s=pptx.addSlide();page++;s.background={color:'FFFFFF'};
+   s.addShape(SH.rect,{x:8.55,y:0,w:4.783,h:7.5,fill:{color:DK.cy},line:{type:'none'}});
+   s.addShape(SH.ellipse,{x:10.6,y:-1.6,w:4.4,h:4.4,fill:{color:'FFFFFF',transparency:90},line:{type:'none'}});
+   if(logo){const h=.58;s.addImage({data:logo.data,x:.75,y:.75,w:h/logo.r,h});}else T(s,'Knauf Insulation',{x:.75,y:.75,w:4,h:.5,fontSize:22,bold:true,color:DK.cy});
+   s.addShape(SH.rect,{x:.75,y:2.55,w:.7,h:.08,fill:{color:DK.cy},line:{type:'none'}});
+   T(s,L('pptCover'),{x:.75,y:2.8,w:7.4,h:1.6,fontSize:38,bold:true,color:DK.ab,valign:'top'});
+   T(s,plainEnt(),{x:.75,y:4.45,w:7.4,h:.5,fontSize:20,color:DK.ink});
+   T(s,`${L('pptPeriod')} ${period}${F.tech?' · '+F.tech:''}`,{x:.75,y:4.98,w:7.4,h:.4,fontSize:14,color:DK.ink2});
+   T(s,src,{x:.75,y:6.6,w:7.4,h:.3,fontSize:10,color:DK.mute});
+   T(s,L('bLabel'),{x:9.05,y:2.35,w:3.8,h:.8,fontSize:15,bold:true,color:'FFFFFF'});
+   T(s,fmt(days),{x:9.05,y:3.1,w:3.8,h:1.4,fontSize:96,bold:true,color:'FFFFFF',valign:'middle'});
+   T(s,!best?L('recNone'):days>=best?L('recNew'):L('recTo')(fmt(best-days),fmt(best)),{x:9.05,y:4.6,w:3.7,h:.6,fontSize:12,color:'FFFFFF'});
+   T(s,L('asof')(),{x:9.05,y:6.6,w:3.7,h:.3,fontSize:11,color:'FFFFFF'});}
+
+  // ===== 2 summary =====
   {const s=pptx.addSlide();
-   const allA=idx(A,{allYears:true});const lta=allA.filter(isLTA).map(i=>A.t[i]).filter(Boolean).sort((a,b)=>a-b);
-   let days,best=0,last=null;if(lta.length){last=lta[lta.length-1];days=Math.max(0,Math.floor((ASOF-last)/864e5));best=days;let prev=Date.parse(YMIN+'-01-01T12:00:00');for(const t of lta){best=Math.max(best,Math.floor((t-prev)/864e5));prev=t;}}
-   else days=Math.floor((ASOF-Date.parse(YMIN+'-01-01T12:00:00'))/864e5);
-   const ltaY=ia.filter(isLTA).length,proY=ia.filter(isPro).length;
-   chrome(s,1,L('pptT1'),L('pptS1')(plainEnt(),period,lta.length?dec(proY/Math.max(1,ltaY)):'–'));
-   // hero panel
+   chrome(s,L('pptT1'),L('pptS1')(plainEnt(),period,ltaT.length?dec(proN/Math.max(1,ltaN)):'–'));
    s.addShape(SH.roundRect,{x:.5,y:2.1,w:4.35,h:4.75,rectRadius:.12,fill:{color:DK.cy},line:{type:'none'}});
    T(s,L('bLabel'),{x:.8,y:2.32,w:3.8,h:.6,fontSize:14,bold:true,color:'FFFFFF'});
    T(s,fmt(days),{x:.8,y:2.9,w:3.8,h:1.2,fontSize:80,bold:true,color:'FFFFFF',valign:'middle'});
@@ -1078,32 +1130,39 @@ async function exportDeck(){
    T(s,!best?L('recNone'):days>=best?L('recNew'):L('recTo')(fmt(best-days),fmt(best)),{x:.8,y:4.42,w:3.8,h:.4,fontSize:10.5,color:'FFFFFF'});
    s.addShape(SH.line,{x:.8,y:4.98,w:3.75,h:0,line:{color:'FFFFFF',width:.75,transparency:55}});
    const bs=[[last?dstr(last):L('noLta'),L('bLastL')],[best?fmt(best):'–',L('bBestL')],[fmt(allA.filter(i=>A.y[i]===YMAX&&isLTA(i)).length),L('bYtdL')],[fmt(allA.filter(i=>A.y[i]===YMAX&&isPro(i)).length),L('bNmL')]];
-   bs.forEach(([v,l],k)=>{const x=.8+(k%2)*1.95,y=5.1+Math.floor(k/2)*.86;T(s,v,{x,y,w:1.85,h:.36,fontSize:19,bold:true,color:'FFFFFF',fit:'shrink'});T(s,l,{x,y:y+.37,w:1.8,h:.42,fontSize:8.5,color:'FFFFFF'});});
-   // module cards
+   bs.forEach(([v,l],k)=>{const x=.8+(k%2)*1.95,y=5.1+Math.floor(k/2)*.86;T(s,v,{x,y,w:1.85,h:.36,fontSize:19,bold:true,color:'FFFFFF'});T(s,l,{x,y:y+.37,w:1.8,h:.42,fontSize:8.5,color:'FFFFFF'});});
    const mods=[[A,ia,L('modA'),DK.or,true],[N,inn,L('modN'),DK.cy,null],[M,im,L('modM'),DK.dg,null]];const cw=(12.83-5.15-.4)/3;
    mods.forEach(([ds,ix,lab,col,gd],k)=>{const x=5.15+k*(cw+.2),y=2.1;panel(s,x,y,cw,1.45);
-     s.addShape(SH.rect,{x:x+.0,y:y+.18,w:.07,h:1.09,fill:{color:col},line:{type:'none'}});
-     T(s,lab,{x:x+.25,y:y+.14,w:cw-.4,h:.25,fontSize:10.5,bold:true,color:DK.ink});
+     s.addShape(SH.rect,{x,y:y+.18,w:.07,h:1.09,fill:{color:col},line:{type:'none'}});
+     T(s,lab,{x:x+.25,y:y+.14,w:cw-.4,h:.25,fontSize:10.5,bold:true});
      T(s,fmt(ix.length),{x:x+.25,y:y+.42,w:cw-.4,h:.5,fontSize:28,bold:true,color:DK.ab});
      const[c,p]=ytdCmp(ds,idx(ds,{allYears:true}),F.y1);
-     T(s,[{text:`${F.y1}${F.y1===YMAX?' '+L('ytd')():''}: `,options:{color:DK.ink2}},{text:fmt(c),options:{bold:true,color:DK.ink}},{text:'  ',options:{}},...deltaRun(c,p,gd)],{x:x+.25,y:y+1.02,w:cw-.35,h:.3,fontSize:9,fit:'shrink'});});
-   // trend chart (quarters)
-   panel(s,5.15,3.75,7.68,3.1);T(s,L('pptTrend'),{x:5.4,y:3.9,w:7.2,h:.28,fontSize:12,bold:true,color:DK.ink});
+     T(s,[{text:`${F.y1}${F.y1===YMAX?' '+L('ytd')():''}: `,options:{color:DK.ink2}},{text:fmt(c),options:{bold:true,color:DK.ink}},{text:'  ',options:{}},...deltaRun(c,p,gd)],{x:x+.25,y:y+1.02,w:cw-.35,h:.3,fontSize:9});});
+   panel(s,5.15,3.75,7.68,3.1);ptitle(s,5.15,3.75,7.68,L('pptTrend'));
    const q0=F.y0*4,qEnd=F.y1===YMAX?Math.floor((YMAX*12+ASOF.getMonth())/3)-1:F.y1*4+3,QL=Math.max(1,qEnd-q0+1),multi=F.y1>F.y0;
    const labels=Array.from({length:QL},(_,k)=>{const q=q0+k,y=Math.floor(q/4),n=q%4+1;return multi?(n===1?String(y):''):`Q${n} ${y}`;});
    const qs=(ds,ix)=>{const a=new Array(QL).fill(0);for(const i of ix){if(!ds.y[i])continue;const k=ds.y[i]*4+Math.floor((ds.mi[i]%12)/3)-q0;if(k>=0&&k<QL)a[k]++;}return a;};
    s.addChart(pptx.ChartType.line,[{name:L('modA'),labels,values:qs(A,ia)},{name:L('modN'),labels,values:qs(N,inn)},{name:'MOC',labels,values:qs(M,im)}],
-     Object.assign({},axis,{x:5.3,y:4.25,w:7.4,h:2.5,chartColors:[DK.or,DK.cy,DK.dg],lineSize:2.25,lineDataSymbol:'none',catAxisLabelFrequency:1,lineSmooth:false}));}
-  // ===== slide 2: safety =====
-  {const s=pptx.addSlide();const I=L('ins');
-   let sub='';if(pers.length>=10){const h=new Array(24).fill(0);pers.forEach(i=>{if(A.h[i]>=0)h[A.h[i]]++;});let b=0,bv=0;for(let k=0;k<24;k++){const v=h[k]+h[(k+1)%24];if(v>bv){bv=v;b=k;}}
-     sub=L('pptS2')(`${b}:00–${(b+2)%24}:00`,pct(bv,pers.length));}
-   chrome(s,2,L('pptT2'),sub);
-   const ks=[[fmt(ia.length),K.all],[fmt(ia.filter(isLTA).length),K.lta],[fmt(ia.filter(isSer).length),K.ser],[fmt(ia.filter(i=>A.hipo[i]).length),K.hipo],[fmt(ia.reduce((a,i)=>a+A.dt[i],0)),K.dt]];
-   const tw=(12.33-.8)/5;ks.forEach(([v,l],k)=>tile(s,.5+k*(tw+.2),2.1,tw,1.0,v,l,k===0));
+     Object.assign({},axis,{x:5.3,y:4.25,w:7.4,h:2.5,chartColors:[DK.or,DK.cy,DK.dg],lineSize:2.25,lineDataSymbol:'none',catAxisLabelFrequency:1}));}
+
+  // ===== 3 safety trend =====
+  {const s=pptx.addSlide();const[c,p]=ytdCmp(A,allA,F.y1);
+   chrome(s,L('pptT4'),L('pptS4')(`${F.y1}${F.y1===YMAX?' '+L('ytd')():''}`,fmt(c),p?`${c>=p?'+':''}${Math.round((c-p)/p*100)} %`:'–',F.y1-1));
+   panel(s,.5,2.1,7.9,4.75);ptitle(s,.5,2.1,7.9,L('grpH'));
+   const G=['Personal','Fire','Environment','Property Damage','Security'];
+   s.addChart(pptx.ChartType.bar,G.map(g=>({name:tr(g),labels:ys,values:yc(A,ia,i=>A.g('grp',i)===g)})),Object.assign({},colOpt,{x:.65,y:2.55,w:7.6,h:4.2,barGrouping:'stacked',chartColors:[DK.or,DK.yl,DK.lg,DK.steel,DK.ab]}));
+   panel(s,8.6,2.1,4.23,2.75);ptitle(s,8.6,2.1,4.23,L('pptLtaY'));
+   s.addChart(pptx.ChartType.bar,[{name:L('pyr')[0],labels:ysS,values:yc(A,ia,isLTA)}],Object.assign({},colOpt,{valAxisMajorUnit:Math.max(...yc(A,ia,isLTA))<10?1:undefined,x:8.7,y:2.5,w:4.03,h:2.25,chartColors:[DK.or],showLegend:false,showValue:true,dataLabelFontSize:8,dataLabelColor:DK.ink2,dataLabelPosition:'outEnd'}));
+   const ttc=ia.map(i=>A.ttc[i]).filter(x=>x>=0),lag=pers.map(i=>A.lag[i]).filter(x=>x>=0);
+   tile(s,8.6,5.0,2.02,1.85,ttc.length?`${fmt(median(ttc))} ${K.days}`:'–',L('ins').ttc[0],true);
+   tile(s,10.81,5.0,2.02,1.85,lag.length?`${pct(lag.filter(x=>x<=24).length,lag.length)} %`:'–',L('pptLag'),false);}
+
+  // ===== 4 safety where/why =====
+  {const s=pptx.addSlide();
+   chrome(s,L('pptT2'),hourTxt?L('pptS2')(hourTxt,hourP):'');
+   tiles(s,[[fmt(ia.length),K.all],[fmt(ltaN),K.lta],[fmt(ia.filter(isSer).length),K.ser],[fmt(ia.filter(i=>A.hipo[i]).length),K.hipo],[fmt(ia.reduce((a,i)=>a+A.dt[i],0)),K.dt]],2.1,1.0);
    const top=3.3,ph=3.55;
-   // pyramid
-   panel(s,.5,top,3.95,ph);T(s,L('pyrH'),{x:.72,y:top+.16,w:3.5,h:.28,fontSize:12,bold:true});
+   panel(s,.5,top,3.95,ph);ptitle(s,.5,top,3.95,L('pyrH'));
    const lv=['Lost Time Accident','Restricted Work Case','Medical Treatment Case','First Aid Case','No Treatment','Near Miss'],cols=[DK.or,DK.or2,DK.or3,DK.yl,DK.c60,DK.lg],names=L('pyr');
    const cnt=lv.map(l=>pers.filter(i=>A.g('sub',i)===l).length);const px=2.0,pw=2.25,cx=px+pw/2;
    lv.forEach((_,k)=>{const y=top+.6+k*.41,w=.55+(pw-.55)*k/5;
@@ -1111,48 +1170,100 @@ async function exportDeck(){
      T(s,fmt(cnt[k]),{x:cx-w/2-.2,y,w:w+.4,h:.34,fontSize:10.5,bold:true,align:'center',valign:'middle',color:k<2?'FFFFFF':DK.ab});
      T(s,names[k],{x:.62,y,w:1.3,h:.34,fontSize:9,align:'right',valign:'middle',color:DK.ink2});});
    T(s,L('pyrNote')(cnt[0]?dec(cnt[3]/cnt[0]):'–',cnt[0]?dec((cnt[4]+cnt[5])/cnt[0]):'–'),{x:.72,y:top+3.1,w:3.55,h:.38,fontSize:8.5,color:DK.ink2});
-   // body
-   panel(s,4.65,top,4.0,ph);T(s,L('bodyH'),{x:4.87,y:top+.16,w:3.6,h:.28,fontSize:12,bold:true});
+   panel(s,4.65,top,4.0,ph);ptitle(s,4.65,top,4.0,L('bodyH'));
    const bp=await bodyPng(pers);const bh=2.85;s.addImage({data:bp.data,x:4.78,y:top+.55,w:bh/bp.r,h:bh});
    const bzA=count(A,pers,'bz',{map:x=>x,split:true}),bzt=pers.filter(i=>A.g('bz',i)).length,zn=L('zn'),bmx=Math.max(1,...bzA.map(x=>x[1]));
    bzA.slice(0,5).forEach(([z,v],k)=>{const y=top+.62+k*.56,x=4.78+bh/bp.r+.12;
-     s.addShape(SH.roundRect,{x,y:y+.04,w:.13,h:.13,rectRadius:.03,fill:{color:rLight(Math.max(.06,Math.pow(v/bmx,.8))).replace(/rgb\((\d+),(\d+),(\d+)\)/,(m,r,g,b)=>[r,g,b].map(n=>(+n).toString(16).padStart(2,'0')).join('')).replace('#','')},line:{type:'none'}});
-     T(s,cap(zn[z]||z),{x:x+.2,y,w:1.15,h:.22,fontSize:9,color:DK.ink,fit:'shrink'});
+     s.addShape(SH.roundRect,{x,y:y+.04,w:.13,h:.13,rectRadius:.03,fill:{color:hx2(rLightA(Math.max(.06,Math.pow(v/bmx,.8))))},line:{type:'none'}});
+     T(s,cap(zn[z]||z),{x:x+.2,y,w:1.15,h:.22,fontSize:9});
      T(s,`${pct(v,bzt)} %`,{x:x+.2,y:y+.21,w:1.1,h:.28,fontSize:14,bold:true,color:DK.red});});
-   // causes
-   panel(s,8.85,top,3.98,ph);T(s,L('pptCauses'),{x:9.07,y:top+.16,w:3.6,h:.28,fontSize:12,bold:true});
-   const skip=['Not Applicable','Jiné','Other'];const ic=count(A,ia,'ic',{skip});const ict=ic.reduce((a,r)=>a+r[1],0);
-   if(ic.length)hbars(s,9.07,top+.62,3.55,ic.slice(0,6),{rowH:.47,color:DK.or,total:ict});else T(s,L('empty'),{x:9.07,y:top+.7,w:3.5,h:.3,fontSize:10,color:DK.mute});}
-  // ===== slide 3: NCR & MOC =====
-  {const s=pptx.addSlide();
-   const aud=inn.filter(i=>N.g('grp',i)==='Audit'),hst=inn.filter(i=>N.g('type',i)==='Hazard Spotting Tour').length;
-   const ncShare=pct(aud.filter(i=>/Non Conformity/.test(N.g('fnd',i))).length,aud.length),ab=pct(im.filter(i=>M.g('st',i)==='Abandoned').length,im.length);
-   chrome(s,3,L('pptT3'),L('pptS3')(ncShare,ab));
-   const ys=yearsArr().map(String),hw=6.0;
-   [[.5,L('modN'),DK.cy],[6.83,L('modM'),DK.dg]].forEach(([x,t,c])=>{s.addShape(SH.rect,{x,y:2.14,w:.14,h:.26,fill:{color:c},line:{type:'none'}});T(s,t,{x:x+.25,y:2.1,w:hw-.3,h:.32,fontSize:14,bold:true,color:DK.ab});});
-   const t3=(hw-.4)/3;
-   [[fmt(inn.length),K.ncAll],[fmt(aud.length-hst),K.aud],[fmt(inn.filter(i=>N.g('fnd',i)==='Major Non Conformity').length),K.maj]].forEach(([v,l],k)=>tile(s,.5+k*(t3+.2),2.55,t3,.92,v,l,k===0));
-   const costs=im.map(i=>M.cost[i]).filter(x=>x!=null&&x>0);
-   [[fmt(im.length),K.mAll],[`${pct(im.filter(i=>M.g('tc',i)==='Trial').length,im.length)} %`,K.trial],[costs.length?fmt(median(costs))+' €':'–',K.cost]].forEach(([v,l],k)=>tile(s,6.83+k*(t3+.2),2.55,t3,.92,v,l,k===0));
-   // charts
-   panel(s,.5,3.62,hw,2.05);panel(s,6.83,3.62,hw,2.05);
-   T(s,L('pptNcYear'),{x:.7,y:3.72,w:5,h:.26,fontSize:11,bold:true});T(s,L('mcYearH'),{x:7.03,y:3.72,w:5,h:.26,fontSize:11,bold:true});
-   const yc=(ds,ix,f)=>ys.map(y=>ix.filter(i=>ds.y[i]===+y&&f(i)).length);
-   const colOpt=Object.assign({},axis,{barDir:'col',barGrouping:'stacked',barGapWidthPct:55,legendFontSize:8.5});
-   s.addChart(pptx.ChartType.bar,[{name:L('pptAud'),labels:ys,values:yc(N,inn,i=>N.g('grp',i)==='Audit')},{name:L('pptQual'),labels:ys,values:yc(N,inn,i=>N.g('grp',i)!=='Audit')}],Object.assign({},colOpt,{x:.6,y:4.0,w:5.8,h:1.62,chartColors:[DK.cy,DK.ab]}));
-   s.addChart(pptx.ChartType.bar,[{name:tr('Change'),labels:ys,values:yc(M,im,i=>M.g('tc',i)==='Change')},{name:tr('Trial'),labels:ys,values:yc(M,im,i=>M.g('tc',i)==='Trial')}],Object.assign({},colOpt,{x:6.93,y:4.0,w:5.8,h:1.62,chartColors:[DK.cy,DK.yl]}));
-   // severity split bar
-   panel(s,.5,5.82,hw,1.08);T(s,L('pptSev'),{x:.7,y:5.92,w:5,h:.24,fontSize:11,bold:true});
+   panel(s,8.85,top,3.98,ph);ptitle(s,8.85,top,3.98,L('natH'));
+   const nat=count(A,pers,'nat',{skip:['Not Applicable']});hbars(s,9.07,top+.62,3.55,nat.slice(0,6),{rowH:.47,color:DK.red,total:nat.reduce((a,r)=>a+r[1],0)});}
+
+  // ===== 5 when =====
+  {const s=pptx.addSlide();const W2=L('wd');
+   chrome(s,L('heatH'),hourTxt?L('pptS5')(hourTxt,hourP,L('wdl')[dayI],pct(wd[5]+wd[6],pers.length)):'');
+   const hy=2.1,hh=2.7;panel(s,.5,hy,12.33,hh);ptitle(s,.5,hy,12.33,L('pptHeat'));
+   const gx=1.2,gw=12.33+.5-gx-.25,cwid=gw/24,rh=.26,gy=hy+.52,hmax=Math.max(1,...hm.flat());
+   hm.forEach((r,d)=>{T(s,W2[d],{x:.72,y:gy+d*rh,w:.45,h:rh-.03,fontSize:9,bold:true,color:DK.ink2,valign:'middle'});
+     r.forEach((v,h)=>s.addShape(SH.rect,{x:gx+h*cwid+.015,y:gy+d*rh+.015,w:cwid-.03,h:rh-.03,fill:{color:heatHex(v/hmax)},line:{type:'none'}}));});
+   for(let h=0;h<24;h+=2)T(s,String(h),{x:gx+h*cwid,y:gy+7*rh+.03,w:cwid,h:.2,fontSize:8,color:DK.mute,align:'center'});
+   const by=4.95,bh2=1.9,bw=(12.33-.4)/3;
+   panel(s,.5,by,bw,bh2);ptitle(s,.5,by,bw,L('pptWd'));
+   s.addChart(pptx.ChartType.bar,[{name:K.pers,labels:W2,values:wd}],Object.assign({},colOpt,{x:.6,y:by+.42,w:bw-.2,h:bh2-.48,chartColors:[DK.cy],showLegend:false}));
+   panel(s,.5+bw+.2,by,bw,bh2);ptitle(s,.5+bw+.2,by,bw,L('pptHours'));
+   const hrs=new Array(24).fill(0);pers.forEach(i=>{if(A.h[i]>=0)hrs[A.h[i]]++;});
+   s.addChart(pptx.ChartType.bar,[{name:K.pers,labels:Array.from({length:24},(_,k)=>k%3===0?String(k):''),values:hrs}],Object.assign({},colOpt,{x:.6+bw+.2,y:by+.42,w:bw-.2,h:bh2-.48,chartColors:[DK.ab],showLegend:false,barGapWidthPct:25}));
+   const x3=.5+2*(bw+.2);panel(s,x3,by,bw,bh2);ptitle(s,x3,by,bw,L('perH'));
+   const pr=count(A,pers,'per',{skip:['Not Applicable']}).slice(0,5);
+   if(pr.length)s.addChart(pptx.ChartType.doughnut,[{name:L('perH'),labels:pr.map(x=>cut(x[0],22)),values:pr.map(x=>x[1])}],{x:x3+.1,y:by+.4,w:bw-.2,h:bh2-.45,holeSize:58,chartColors:[DK.cy,DK.ab,DK.or,DK.lg,DK.yl],showLegend:true,legendPos:'r',legendFontSize:8.5,legendFontFace:DF,legendColor:DK.ink2,showPercent:false,showValue:false,dataBorder:{pt:1,color:'FFFFFF'}});}
+
+  // ===== 6 causes =====
+  {const s=pptx.addSlide();const ic=count(A,ia,'ic',{skip}),sc=count(A,ia,'sc',{skip}),fires=ia.filter(i=>A.g('grp',i)==='Fire'),fps=count(A,fires,'ps');
+   const ict=ic.reduce((a,r)=>a+r[1],0),sct=sc.reduce((a,r)=>a+r[1],0);
+   chrome(s,L('pptT6'),ic.length?L('pptS6')(ic[0][0],pct(ic[0][1],ict),sc[0]?.[0]||'–',sc[0]?pct(sc[0][1],sct):0):'');
+   const w=(12.33-.4)/3,y=2.1,h=4.75;
+   [[L('icH'),ic,DK.or,ict],[L('scH'),sc,DK.ab,sct],[`${L('fireH')} (${fmt(fires.length)})`,fps,DK.or2,fires.length]].forEach(([t,rows,c,tot],k)=>{const x=.5+k*(w+.2);
+     panel(s,x,y,w,h);ptitle(s,x,y,w,t);hbars(s,x+.22,y+.62,w-.44,rows.slice(0,8),{rowH:.5,color:c,total:tot});});}
+
+  // ===== 7 NCR =====
+  {const s=pptx.addSlide();const aud=inn.filter(i=>N.g('grp',i)==='Audit'),hst=inn.filter(i=>N.g('type',i)==='Hazard Spotting Tour').length;
+   const ncShare=pct(aud.filter(i=>/Non Conformity/.test(N.g('fnd',i))).length,aud.length);
+   chrome(s,L('ncH'),L('pptS7')(ncShare,fmt(aud.length)));
+   tiles(s,[[fmt(inn.length),K.ncAll],[fmt(hst),K.hst],[fmt(aud.length-hst),K.aud],[fmt(inn.length-aud.length),K.q],[fmt(inn.filter(i=>N.g('fnd',i)==='Major Non Conformity').length),K.maj],[fmt(inn.filter(i=>['Under Investigation','Sign Off','Central Level Sign Off'].includes(N.g('st',i))).length),K.open]]);
+   const y=3.2,h=3.65;panel(s,.5,y,6.9,h);ptitle(s,.5,y,6.9,L('ncYearH'));
+   const types=count(N,inn,'type').slice(0,5).map(x=>x[0]);
+   s.addChart(pptx.ChartType.bar,types.map(t=>({name:t,labels:ys,values:yc(N,inn,i=>tr(N.g('type',i))===t)})),Object.assign({},colOpt,{x:.6,y:y+.42,w:6.7,h:h-.5,barGrouping:'stacked',chartColors:[DK.cy,DK.ab,DK.or,DK.lg,DK.yl]}));
+   const rx=7.6,rw=5.23;panel(s,rx,y,rw,1.75);ptitle(s,rx,y,rw,L('pptSev'));
    const order=['Good Practice','Opportunity for Improvement','Observation','Minor Non Conformity','Major Non Conformity'],sc=[DK.lg,DK.cy,DK.grey,DK.yl,DK.or];
    const fc=Object.fromEntries(count(N,aud,'fnd',{map:x=>x}));const fv=order.map(o=>fc[o]||0),ft=fv.reduce((a,b)=>a+b,0);
-   if(ft){let x=.7;const W=5.6;fv.forEach((v,k)=>{if(!v)return;const w=W*v/ft;s.addShape(SH.rect,{x,y:6.22,w,h:.18,fill:{color:sc[k]},line:{color:'FFFFFF',width:1}});x+=w;});
-     const lw=5.6/5;order.forEach((o,k)=>{const x=.7+k*lw;s.addShape(SH.ellipse,{x,y:6.5,w:.1,h:.1,fill:{color:sc[k]},line:{type:'none'}});
-       T(s,[{text:`${pct(fv[k],ft)} %`,options:{bold:true,color:DK.ink}},{text:' '+tr(o),options:{color:DK.ink2}}],{x:x+.14,y:6.45,w:lw-.16,h:.36,fontSize:8,fit:'shrink'});});}
-   else T(s,L('empty'),{x:.7,y:6.3,w:5,h:.3,fontSize:10,color:DK.mute});
-   // assessments
-   panel(s,6.83,5.82,hw,1.08);T(s,L('pptAss'),{x:7.03,y:5.92,w:5.4,h:.24,fontSize:11,bold:true});
-   const AS=L('as'),sh=AS.map((n,b)=>[n,pct(im.filter(i=>M.as[i]&(1<<b)).length,im.length)]).sort((a,b)=>b[1]-a[1]).slice(0,4);
-   const aw=5.6/4;sh.forEach(([n,v],k)=>{const x=7.03+k*aw;T(s,`${v} %`,{x,y:6.2,w:aw-.1,h:.36,fontSize:18,bold:true,color:DK.cy});T(s,n,{x,y:6.54,w:aw-.1,h:.26,fontSize:8.5,color:DK.ink2,fit:'shrink'});});}
+   if(ft){let x=rx+.22;const W=rw-.44;fv.forEach((v,k)=>{if(!v)return;const ww=W*v/ft;s.addShape(SH.rect,{x,y:y+.55,w:ww,h:.22,fill:{color:sc[k]},line:{color:'FFFFFF',width:1}});x+=ww;});
+     const lw=(rw-.44)/3;order.forEach((o,k)=>{const x=rx+.22+(k%3)*lw,yy=y+.92+Math.floor(k/3)*.38;s.addShape(SH.ellipse,{x,y:yy+.06,w:.1,h:.1,fill:{color:sc[k]},line:{type:'none'}});
+       T(s,[{text:`${pct(fv[k],ft)} %`,options:{bold:true,color:DK.ink}},{text:' '+tr(o),options:{color:DK.ink2}}],{x:x+.15,y:yy,w:lw-.17,h:.34,fontSize:8.5});});}
+   else T(s,L('empty'),{x:rx+.22,y:y+.6,w:4,h:.3,fontSize:10,color:DK.mute});
+   panel(s,rx,y+1.9,rw,1.75);ptitle(s,rx,y+1.9,rw,L('complH'));
+   const cc=k=>yc(N,inn,i=>N.g('src',i)===k);
+   s.addChart(pptx.ChartType.line,[{name:L('cust'),labels:ysS,values:cc('Customer Complaint')},{name:L('intl'),labels:ysS,values:cc('Internal Department Complaint')}],Object.assign({},axis,{x:rx+.1,y:y+2.28,w:rw-.2,h:1.32,chartColors:[DK.or,DK.cy],lineSize:2,lineDataSymbol:'circle',lineDataSymbolSize:5,legendPos:'r',legendFontSize:8.5}));}
+
+  // ===== 8 MOC =====
+  {const s=pptx.addSlide();const costs=im.map(i=>M.cost[i]).filter(x=>x!=null&&x>0),dur=im.map(i=>M.dur[i]).filter(x=>x>=0&&x<3650);
+   const ab=pct(im.filter(i=>M.g('st',i)==='Abandoned').length,im.length);
+   chrome(s,L('mcH'),L('pptS8')(pct(im.filter(i=>M.g('tc',i)==='Trial').length,im.length),ab,costs.length?fmt(costs.reduce((a,b)=>a+b,0)):'–'));
+   tiles(s,[[fmt(im.length),K.mAll],[`${pct(im.filter(i=>M.g('tc',i)==='Trial').length,im.length)} %`,K.trial],[fmt(im.filter(i=>['Ready For Approval','Approved','In Progress'].includes(M.g('st',i))).length),K.wip],[`${pct(im.filter(i=>M.g('lvl',i)==='Central').length,im.length)} %`,K.central],[costs.length?fmt(median(costs))+' €':'–',K.cost],[dur.length?fmt(median(dur))+' '+K.days:'–',K.dur]]);
+   const y=3.2,h=3.65,w=(12.33-.4)/3;
+   panel(s,.5,y,w,h);ptitle(s,.5,y,w,L('mcYearH'));
+   s.addChart(pptx.ChartType.bar,[{name:tr('Change'),labels:ysS,values:yc(M,im,i=>M.g('tc',i)==='Change')},{name:tr('Trial'),labels:ysS,values:yc(M,im,i=>M.g('tc',i)==='Trial')}],Object.assign({},colOpt,{x:.6,y:y+.42,w:w-.2,h:h-.5,barGrouping:'stacked',chartColors:[DK.cy,DK.yl]}));
+   const x2=.5+w+.2;panel(s,x2,y,w,h);ptitle(s,x2,y,w,L('radarH'));
+   const AS=L('as'),ash=AS.map((n,b)=>[n,im.filter(i=>M.as[i]&(1<<b)).length]).sort((a,b)=>b[1]-a[1]);
+   hbars(s,x2+.22,y+.58,w-.44,ash,{rowH:.375,color:DK.cy,total:im.length,fs:9.5});
+   const x3=.5+2*(w+.2);panel(s,x3,y,w,1.75);ptitle(s,x3,y,w,L('costH'));
+   const bins=[[0,500],[500,2000],[2000,1e4],[1e4,5e4],[5e4,2.5e5],[2.5e5,1e12]];
+   s.addChart(pptx.ChartType.bar,[{name:L('mocCnt'),labels:L('bins'),values:bins.map(b=>costs.filter(c=>c>=b[0]&&c<b[1]).length)}],Object.assign({},colOpt,{x:x3+.1,y:y+.4,w:w-.2,h:1.3,chartColors:[DK.ab],showLegend:false,catAxisLabelFontSize:7.5}));
+   panel(s,x3,y+1.9,w,1.75);ptitle(s,x3,y+1.9,w,L('subjH'));
+   hbars(s,x3+.22,y+2.45,w-.44,count(M,im,'subj').slice(0,3),{rowH:.4,color:DK.dg,fs:9.5});}
+
+  // ===== 9 compare =====
+  {const s=pptx.addSlide();const{lv,list,sel}=cmpRows();
+   let rows=list.slice(0,12);if(sel&&!rows.some(r=>r.c===sel)){const r=list.find(r=>r.c===sel);if(r)rows.push(r);}
+   const bestR=list.filter(r=>r.ratio!=null&&r.lta>=3).sort((a,b)=>b.ratio-a.ratio)[0];
+   chrome(s,L('cpH')[lv],L('pptS9')(fmt(list.length),bestR?bestR.lab:'–',bestR?dec(bestR.ratio):'–'));
+   const C=L('col'),keys=['c','a','lta','fa','pro','ratio','fire','n','hst','m'];
+   const hd=keys.map((k,j)=>({text:k==='c'?L(lv==='p'?'lvP':lv==='r'?'lvR':'lvC'):C[k],options:{bold:true,color:'FFFFFF',fill:{color:DK.ab},align:j?'right':'left',fontSize:9.5,valign:'middle'}}));
+   const body=rows.map((r,ri)=>keys.map((k,j)=>{const me=r.c===sel;const v=k==='c'?r.lab:k==='ratio'?(r.ratio==null?'–':dec(r.ratio)):fmt(r[k]);
+     return{text:v,options:{bold:me||j===0,color:me?DK.ab:DK.ink,fill:{color:me?'CCEBF8':(ri%2?'F7F9FA':'FFFFFF')},align:j?'right':'left',fontSize:10,valign:'middle'}};}));
+   s.addTable([hd,...body],{x:.5,y:2.15,w:12.33,colW:[3.03,1,1,1,1.2,1.1,.9,1,1,1.1],rowH:.31,fontFace:DF,margin:[0,.1,0,.1],border:{type:'solid',pt:.5,color:DK.line}});
+   T(s,L('pptCpNote'),{x:.5,y:2.15+.31*(rows.length+1)+.12,w:12.33,h:.3,fontSize:9,color:DK.mute});}
+
+  // ===== 10 findings =====
+  {const s=pptx.addSlide();const I0=L('ins');const out=insList(ia,inn,im).filter(r=>r[0]!==I0.ttc[0]).slice(0,9);
+   chrome(s,L('pptT10'),L('pptS10'));
+   const w=(12.33-.4)/3,h=1.47;
+   out.forEach(([k,v,e],n)=>{const x=.5+(n%3)*(w+.2),y=2.1+Math.floor(n/3)*(h+.16);
+     panel(s,x,y,w,h);s.addShape(SH.rect,{x,y:y+.2,w:.07,h:h-.4,fill:{color:k===I0.aud[0]?DK.cy:k===I0.abd[0]?DK.dg:DK.or},line:{type:'none'}});
+     T(s,k,{x:x+.25,y:y+.14,w:w-.4,h:.24,fontSize:10,bold:true,color:DK.ink2});
+     T(s,v,{x:x+.25,y:y+.38,w:w-.4,h:.42,fontSize:20,bold:true,color:DK.ab});
+     T(s,e,{x:x+.25,y:y+.82,w:w-.4,h:.6,fontSize:9,color:DK.ink2});});}
+
   const safe=plainEnt().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'');
   await pptx.writeFile({fileName:`KIMS_${safe||'report'}_${RAW.asof}.pptx`});
   }catch(e){console.error(e);alertMsg(L('pptErr'));}
